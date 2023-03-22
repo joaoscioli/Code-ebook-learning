@@ -3,10 +3,7 @@ package tacos.web;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import tacos.Ingredient;
 import tacos.Taco;
 import tacos.TacoOrder;
@@ -15,12 +12,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import tacos.Ingredient.Type;
+
 @Slf4j
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
+    @ModelAttribute
     public void addIngredientsToModel(Model model) {
         List<Ingredient> ingredients = Arrays.asList(
                 new Ingredient("FLTO","Flour Tortilla", Ingredient.Type.WRAP),
@@ -32,9 +32,10 @@ public class DesignTacoController {
                 new Ingredient("CHED", "Cheddar", Ingredient.Type.CHEESE),
                 new Ingredient("JACK", "Monterrey Jack", Ingredient.Type.CHEESE),
                 new Ingredient("SLSA", "Salsa", Ingredient.Type.SAUCE),
-                new Ingredient("SRCR", "Sour Cream", Ingredient.Type.SAUCE));
-        Ingredient.Type[] types = Ingredient.Type.values();
-        for (Ingredient.Type type : types) {
+                new Ingredient("SRCR", "Sour Cream", Ingredient.Type.SAUCE)
+        );
+        Ingredient.Type[] types = Type.values();
+        for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(),
                     filterByType(ingredients,type));
             }
@@ -55,7 +56,14 @@ public class DesignTacoController {
         return "design";
     }
 
-    private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Ingredient.Type type){
+    @PostMapping
+    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder) {
+        tacoOrder.addTaco(taco);
+        log.info("Processing taco: {}",taco);
+        return "redirect:/orders/current";
+    }
+
+    private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Type type){
         return ingredients
                 .stream()
                 .filter(x -> x.getType().equals(type))
