@@ -1,4 +1,4 @@
-package capitulo2;
+package capitulo02;
 /**
  * Exemplo 4 - Livro Java
  * Apresentando o loop for

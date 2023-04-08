@@ -1,4 +1,4 @@
-package capitulo2;
+package capitulo02;
 /**
  * Exemplo 2 - Livro Java
  * @Author - JoaoScioli

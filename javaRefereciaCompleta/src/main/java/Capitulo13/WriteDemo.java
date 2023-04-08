@@ -1,4 +1,4 @@
-package Capitulo13;
+package capitulo13;
 
 /**
  * Capitulo 13 - I/O, Try-with-Resources, e Outros topicos

@@ -1,9 +1,4 @@
-package Capitulo13;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.*;
+package capitulo13;
 
 /**
  * Capitulo 13 - I/O, Try-with-Resources, e Outros topicos

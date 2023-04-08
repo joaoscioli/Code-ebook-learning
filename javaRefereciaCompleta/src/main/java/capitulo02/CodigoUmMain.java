@@ -1,4 +1,4 @@
-package capitulo2;
+package capitulo02;
 /**
  * @Author Joao Scioli
  *

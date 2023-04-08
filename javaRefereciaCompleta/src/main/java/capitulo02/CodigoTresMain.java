@@ -1,4 +1,4 @@
-package capitulo2;
+package capitulo02;
 /**
  * Exemplo 3 - Livro Java
  * Apresentando a Declaração If
