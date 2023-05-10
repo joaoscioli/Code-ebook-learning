@@ -1,6 +1,7 @@
 package com.springbootlearning.learningspringboot3.ch2;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +25,12 @@ public class VideoService {
         extend.add(newVideo);
         this.videos = List.copyOf(extend);
         return newVideo;
+    }
+
+    public List<VideoEntity> search(VideoSearch videoSearch) {
+        if (StringUtils.hasText(videoSearch.name()) && StringUtils.hasText(videoSearch.description())) {
+            return repository.findByNameContainsOrDescriptionContainsAllIgnoreCase(
+                    videoSearch.name(), videoSearch.description());
+        }
     }
 }
