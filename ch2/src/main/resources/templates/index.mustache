@@ -32,6 +32,9 @@
         <!--Lista estilizada de videos-->
 
         <!--Formulario HTML-->
+        <div class="wrapper">
+            <h1>New Videos</h1>
+        </div>
         <div class="container">
             <form action="/new-video" method="post">
                 <div class="field" tabindex="1">
@@ -43,6 +46,42 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
-        <!--Formulario HTML-->
+        <!--Formulario de pesquisa HTML-->
+        <div class="wrapper">
+            <h1>Multi Search</h1>
+        </div>
+        <div class="container">
+            <form action="/multi-field-search" method="post">
+                <div class="field" tabindex="1">
+                    <label for="name">
+                        <i class="far fa-user"></i>Name
+                    </label>
+                    <input type="text" name="name">
+                </div>
+                <div class="field" tabindex="1">
+                    <label for="description">
+                        <i class="far fa-user"></i>Description
+                    </label>
+                    <input type="text" name="description">
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <!--Formulario de pesquisa universal HTML-->
+        <div class="wrapper">
+            <h1>Universal Search</h1>
+        </div>
+        <div class="container">
+            <form action="/universal-search" method="post">
+                <div class="field" tabindex="1">
+                    <label for="value">
+                        <i class="far fa-user"></i>Search:
+                    </label>
+                    <input type="text" name="value">
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
     </body>
 </html>
